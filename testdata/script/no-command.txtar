@@ -1,0 +1,10 @@
+! exec go-release
+! stdout .
+stderr 'usage: go-release \[command\]\n\nAvailable commands:\n\n  verify\n  perform\n'
+-- go-release.yaml --
+---
+verify: do-verify
+release: do-release
+-- .version --
+v1.0.0
+

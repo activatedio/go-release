@@ -28,8 +28,7 @@ Create a g`go-release.yaml` file in your project with build defintions:
 
 ``` yaml
 ---
-go-release:
-  verify: go test ./...
+verify: go test ./...
 ```
 
 ## Configuration
