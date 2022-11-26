@@ -62,17 +62,21 @@ func (r *Repository) Tag(tag string) error {
 	return err
 }
 
+// TODO - this isn't purely and scm operation
 func (r *Repository) IncrementAndCommit(version *Version) error {
 
 	next := version.Increment()
 
-	f, err := os.Open("./.version")
+	f, err := os.OpenFile(".version", os.O_WRONLY|os.O_TRUNC, 0644)
+	defer f.Close()
 
 	if err != nil {
 		return err
 	}
 
-	_, err = f.WriteString(next.Version)
+	_, err = f.WriteString(next.Version + "\n")
+
+	f.Sync()
 
 	if err != nil {
 		return err
@@ -84,7 +88,7 @@ func (r *Repository) IncrementAndCommit(version *Version) error {
 		return err
 	}
 
-	_, err = w.Add("./.version")
+	_, err = w.Add(".version")
 
 	if err != nil {
 		return err
