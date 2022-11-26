@@ -1,0 +1,3 @@
+! exec go-release
+! stdout .
+stderr 'error: config file ./go-release.yaml does not exist'

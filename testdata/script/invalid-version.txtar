@@ -1,0 +1,9 @@
+! exec go-release
+! stdout .
+stderr 'error: invalid version string\n'
+-- go-release.yaml --
+---
+verify: do-verify
+release: do-release
+-- .version --
+v1.0.0.a

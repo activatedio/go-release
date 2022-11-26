@@ -1,0 +1,13 @@
+exec chmod 755 run-verify
+! exec go-release verify
+stdout 'verify failed\n'
+-- go-release.yaml --
+---
+verify: ./run-verify
+release: do-release
+
+-- run-verify --
+echo 'verify failed'
+exit 1
+-- .version --
+v1.0.0

@@ -1,0 +1,7 @@
+! exec go-release
+! stdout .
+stderr 'error: version file ./.version does not exist\n'
+-- go-release.yaml --
+---
+verify: do-verify
+release: do-release
