@@ -36,10 +36,14 @@ func Perform(config *Config) error {
 		return err
 	}
 
-	log.Println("pushing to origin")
+	if !config.SkipPush {
+		log.Println("pushing to origin")
 
-	if err := repo.PushToOrigin(); err != nil {
-		return err
+		if err := repo.PushToOrigin(); err != nil {
+			return err
+		}
+	} else {
+		log.Println("not pushing to origin")
 	}
 
 	return nil
