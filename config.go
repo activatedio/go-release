@@ -11,7 +11,7 @@ type Config struct {
 	Verify   string
 	Perform  string
 	Version  *Version
-	SkipPush bool
+	SkipPush bool `yaml:"skip-push"`
 }
 
 func LoadConfig() (*Config, error) {
