@@ -14,6 +14,6 @@ goland:
 release:
 	go build
 	./go-release perform
-
-refreshsum:
+	git push origin
+	git push origin --tags
 	GOPROXY=proxy.golang.org go list -m github.com/activatedio/go-release@$(VERSION)
