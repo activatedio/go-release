@@ -8,7 +8,8 @@ following standard build flow:
 * Run verification build (optional)
 * Tag git with current version
 * Run release build (if applicable)
-* Increment the version and push to git remote
+* Increment the version and commit
+* Push to origin (optional)
 
 ## Install
 
@@ -37,14 +38,15 @@ Support yaml values are:
 
 | Name | Description |
 | ---- | ----------- |
-| `go-release.verify` | Command to run before tagging the project |
-| `go-release.perform` | Command to run to perform release |
+| `verify` | Command to run before tagging the project |
+| `perform` | Command to run to perform release |
+| `skip-push` | Skip push to origin |
 
-The `go-release.verify` command is recommeded to check the project via
-compliation and any automated tests.
+The `verify` command is recommeded to check the project via compliation and any
+automated tests.
 
-The `go-release.perform` command is used for projects which require a build step
-to release. Projects such as go modules generally to not require this.
+The `perform` command is used for projects which require a build step to
+release. Projects such as go modules generally to not require this.
 
 ## Usage
 
