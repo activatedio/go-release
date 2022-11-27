@@ -9,8 +9,3 @@ test:
 goland:
 	nix-shell goland.nix
 
-release:
-	go get github.com/activatedio/go-release@v0.0.3
-	go-release perform
-
-
