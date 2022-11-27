@@ -37,11 +37,12 @@ func Perform(config *Config) error {
 	}
 
 	if !config.SkipPush {
-		log.Println("pushing to origin")
 
+		log.Println("pushing to origin")
 		if err := repo.PushToOrigin(); err != nil {
 			return err
 		}
+
 	} else {
 		log.Println("not pushing to origin")
 	}
