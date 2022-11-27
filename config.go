@@ -8,9 +8,10 @@ import (
 )
 
 type Config struct {
-	Verify  string
-	Perform string
-	Version *Version
+	Verify   string
+	Perform  string
+	Version  *Version
+	SkipPush bool
 }
 
 func LoadConfig() (*Config, error) {

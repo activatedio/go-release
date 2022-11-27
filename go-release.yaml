@@ -1,2 +1,3 @@
 ---
 verify: go test ./...
+skip-push: true
