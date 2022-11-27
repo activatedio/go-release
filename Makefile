@@ -1,4 +1,6 @@
-.PHONY: test goland
+.PHONY: test goland release
+
+VERSION ?= $(shell cat ./.version)
 
 clean:
 	go clean -testcache
@@ -12,5 +14,6 @@ goland:
 release:
 	go build
 	./go-release perform
-	verion=$$(cat ".version")
-	GOPROXY=proxy.golang.org go list -m github.com/activatedio/go-release@$${version}
+
+refreshsum:
+	GOPROXY=proxy.golang.org go list -m github.com/activatedio/go-release@$(VERSION)
