@@ -40,6 +40,9 @@ func (r *Repository) VerifyWorkspaceClean() error {
 
 		return nil
 	} else {
+
+		log.Println(s.String())
+
 		return errors.New("workspace is not clean")
 	}
 
