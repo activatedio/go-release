@@ -8,10 +8,11 @@ import (
 )
 
 type Config struct {
-	Verify   string
-	Perform  string
-	Version  *Version
-	SkipPush bool `yaml:"skip-push"`
+	Verify                  string
+	Perform                 string
+	Version                 *Version
+	SkipPush                bool `yaml:"skip-push"`
+	SkipCleanWorkspaceCheck bool `yaml:"skip-clean-workspace-check"`
 }
 
 func LoadConfig() (*Config, error) {
