@@ -12,10 +12,18 @@ func Perform(config *Config) error {
 		return err
 	}
 
-	log.Println("verifying clean workspace")
+	if config.SkipCleanWorkspaceCheck {
 
-	if err := repo.VerifyWorkspaceClean(); err != nil {
-		return err
+		log.Println("skipping clean workspace check")
+
+	} else {
+
+		log.Println("verifying clean workspace")
+
+		if err := repo.VerifyWorkspaceClean(); err != nil {
+			return err
+		}
+
 	}
 
 	if config.Perform != "" {

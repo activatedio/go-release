@@ -65,7 +65,7 @@ func (r *Repository) Tag(tag string) error {
 	return err
 }
 
-// TODO - this isn't purely and scm operation
+// TODO - this isn't purely an scm operation
 func (r *Repository) IncrementAndCommit(version *Version) error {
 
 	next := version.Increment()
