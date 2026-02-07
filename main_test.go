@@ -1,17 +1,17 @@
 package main_test
 
 import (
+	"testing"
+
 	main "github.com/activatedio/go-release"
 	"github.com/rogpeppe/go-internal/testscript"
-	"os"
-	"testing"
 )
 
 func TestMain(m *testing.M) {
 
-	os.Exit(testscript.RunMain(m, map[string]func() int{
+	testscript.Main(m, map[string]func(){
 		"go-release": main.Main,
-	}))
+	})
 }
 
 func TestGoRelease(t *testing.T) {

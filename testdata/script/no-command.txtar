@@ -1,7 +1,7 @@
 ! exec go-release
 ! stdout .
-stderr 'usage: go-release \[command\]\n\nAvailable commands:\n\n  verify\n  perform\n'
--- go-release.yaml --
+stderr 'go-release: error: expected one of "verify", "perform"\n'
+-- .go-release.yaml --
 ---
 verify: do-verify
 release: do-release

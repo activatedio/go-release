@@ -1,7 +1,7 @@
-! exec go-release
+! exec go-release perform
 ! stdout .
-stderr 'error: invalid version string\n'
--- go-release.yaml --
+stderr 'error: invalid semantic version\n'
+-- .go-release.yaml --
 ---
 verify: do-verify
 release: do-release

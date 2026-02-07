@@ -1,9 +1,14 @@
-# go-release
+> ## go-release
+>
+> Build wrapper to automate version tagging and incrementing. Supports the
+> following standard build flow:
+>
 
-## Overview
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/activatedio/go-release/ci.yaml?branch=main&style=flat-square)](https://github.com/activatedio/go-release/actions?query=workflow%3ACI)
+[![Go Report Card](https://goreportcard.com/badge/github.com/activatedio/go-release?style=flat-square)](https://goreportcard.com/report/github.com/activatedio/go-release)
 
-Build wrapper to automate version tagging and incrementing. Supports the
-following standard build flow:
+
+## Overeview
 
 * Run verification build (optional)
 * Tag git with current version

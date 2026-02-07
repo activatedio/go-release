@@ -2,9 +2,11 @@ package main
 
 import (
 	"errors"
-	git "github.com/go-git/go-git/v5"
 	"log"
 	"os"
+
+	"github.com/Masterminds/semver/v3"
+	git "github.com/go-git/go-git/v5"
 )
 
 type Repository struct {
@@ -39,12 +41,10 @@ func (r *Repository) VerifyWorkspaceClean() error {
 	if s.IsClean() {
 
 		return nil
-	} else {
-
-		log.Println(s.String())
-
-		return errors.New("workspace is not clean")
 	}
+
+	log.Println(s.String())
+	return errors.New("workspace is not clean")
 
 }
 
@@ -66,20 +66,37 @@ func (r *Repository) Tag(tag string) error {
 }
 
 // TODO - this isn't purely an scm operation
-func (r *Repository) IncrementAndCommit(version *Version) error {
+func (r *Repository) IncrementAndCommit(version *semver.Version, incrementMode string) error {
 
-	next := version.Increment()
+	var next semver.Version
+	switch incrementMode {
+	case IncrementMajor:
+		next = version.IncMajor()
+	case IncrementMinor:
+		next = version.IncMinor()
+	case IncrementPatch:
+		next = version.IncPatch()
+	default:
+		return errors.New("unrecognized increment mode " + incrementMode)
+	}
 
-	f, err := os.OpenFile(".version", os.O_WRONLY|os.O_TRUNC, 0644)
-	defer f.Close()
+	f, err := os.OpenFile(".version", os.O_WRONLY|os.O_TRUNC, 0600)
 
 	if err != nil {
 		return err
 	}
 
-	_, err = f.WriteString(next.Version + "\n")
+	defer func() {
+		mustNoError(f.Close())
+	}()
 
-	f.Sync()
+	_, err = f.WriteString(next.String() + "\n")
+
+	if err != nil {
+		return err
+	}
+
+	err = f.Sync()
 
 	if err != nil {
 		return err

@@ -1,0 +1,3 @@
+exec go-release --help
+stdout 'Usage: go-release'
+! stderr .

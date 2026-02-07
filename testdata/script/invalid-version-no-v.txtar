@@ -1,10 +1,9 @@
 ! exec go-release perform
 ! stdout .
-stderr 'error: .version file must be on one line\n'
+stderr 'error: version must start with ''v''\n'
 -- .go-release.yaml --
 ---
 verify: do-verify
 release: do-release
 -- .version --
-v1.0.0
-0.0
+1.0.0

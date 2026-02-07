@@ -1,7 +1,7 @@
 ! exec go-release some-command
 ! stdout .
-stderr 'error: unrecognized command some-command\n'
--- go-release.yaml --
+stderr 'go-release: error: unexpected argument some-command\n'
+-- .go-release.yaml --
 ---
 verify: do-verify
 release: do-release

@@ -34,13 +34,13 @@ func Perform(config *Config) error {
 
 	log.Println("tagging release")
 
-	if err := repo.Tag(config.Version.Version); err != nil {
+	if err := repo.Tag(config.Version.String()); err != nil {
 		return err
 	}
 
-	log.Println("incrementing and commiting new version")
+	log.Println("incrementing and committing new version")
 
-	if err := repo.IncrementAndCommit(config.Version); err != nil {
+	if err := repo.IncrementAndCommit(config.Version, config.Increment); err != nil {
 		return err
 	}
 
