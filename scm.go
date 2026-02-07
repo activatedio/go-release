@@ -90,7 +90,7 @@ func (r *Repository) IncrementAndCommit(version *semver.Version, incrementMode s
 		mustNoError(f.Close())
 	}()
 
-	_, err = f.WriteString(next.String() + "\n")
+	_, err = f.WriteString("v" + next.String() + "\n")
 
 	if err != nil {
 		return err

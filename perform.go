@@ -34,7 +34,7 @@ func Perform(config *Config) error {
 
 	log.Println("tagging release")
 
-	if err := repo.Tag(config.Version.String()); err != nil {
+	if err := repo.Tag("v" + config.Version.String()); err != nil {
 		return err
 	}
 
