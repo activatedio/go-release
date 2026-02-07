@@ -30,7 +30,7 @@ Create a file `.version` in your go project with the current version.
 v1.0.0
 ```
 
-Create a g`go-release.yaml` file in your project with build defintions:
+Create a `.go-release.yaml` file in your project with build defintions:
 
 ``` yaml
 ---
@@ -43,6 +43,7 @@ Support yaml values are:
 
 | Name | Description |
 | ---- | ----------- |
+| `increment` | Version to incremenet - major|minor|patch - defaults to minor |
 | `verify` | Command to run before tagging the project |
 | `perform` | Command to run to perform release |
 | `skip-push` | Skip push to origin |
@@ -52,6 +53,27 @@ automated tests.
 
 The `perform` command is used for projects which require a build step to
 release. Projects such as go modules generally to not require this.
+
+## Help
+
+Output of `go-release --help`
+
+```
+Usage: go-release <command> [flags]
+
+Flags:
+  -h, --help                          Show context-sensitive help.
+      --increment=STRING              version increment level - patch|minor|major - defaults to minor
+      --skip-push                     skip git push after commit
+      --skip-clean-workspace-check    skip check for a clean workspace
+
+Commands:
+  verify [flags]
+    verify release but do not perform
+
+  perform [flags]
+    perform release
+```
 
 ## Usage
 
