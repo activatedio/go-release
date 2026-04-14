@@ -8,7 +8,7 @@ import (
 
 func RunInShell(command string) error {
 
-	cmd := exec.CommandContext(context.Background(), "sh", "-c", command)
+	cmd := exec.CommandContext(context.Background(), "sh", "-c", command) //nolint:gosec // okay to launch with a variable
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Env = os.Environ()
