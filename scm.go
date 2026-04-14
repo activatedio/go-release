@@ -120,9 +120,14 @@ func (r *Repository) IncrementAndCommit(version *semver.Version, incrementMode s
 
 }
 
-func (r *Repository) PushToOrigin() error {
+type PushToOriginOptions struct {
+	Options map[string]string
+}
+
+func (r *Repository) PushToOrigin(opts PushToOriginOptions) error {
 
 	return r.repository.Push(&git.PushOptions{
 		RemoteName: "origin",
+		Options:    opts.Options,
 	})
 }

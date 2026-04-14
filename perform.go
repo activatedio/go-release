@@ -47,7 +47,7 @@ func Perform(config *Config) error {
 	if !config.SkipPush {
 
 		log.Println("pushing to origin")
-		if err := repo.PushToOrigin(); err != nil {
+		if err := repo.PushToOrigin(PushToOriginOptions{Options: config.PushOptions}); err != nil {
 			return err
 		}
 

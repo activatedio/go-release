@@ -17,12 +17,13 @@ const (
 )
 
 type Config struct {
-	Increment               string          `yaml:"increment"`
-	Verify                  string          `yaml:"verify"`
-	Perform                 string          `yaml:"perform"`
-	Version                 *semver.Version `yaml:"-"`
-	SkipPush                bool            `yaml:"skip-push"`
-	SkipCleanWorkspaceCheck bool            `yaml:"skip-clean-workspace-check"`
+	Increment               string            `yaml:"increment"`
+	Verify                  string            `yaml:"verify"`
+	Perform                 string            `yaml:"perform"`
+	Version                 *semver.Version   `yaml:"-"`
+	SkipPush                bool              `yaml:"skip-push"`
+	SkipCleanWorkspaceCheck bool              `yaml:"skip-clean-workspace-check"`
+	PushOptions             map[string]string `yaml:"push-options"`
 }
 
 func LoadConfig() (*Config, error) {

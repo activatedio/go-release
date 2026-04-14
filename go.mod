@@ -1,8 +1,6 @@
 module github.com/activatedio/go-release
 
-go 1.24.0
-
-toolchain go1.24.6
+go 1.26.1
 
 require (
 	github.com/Masterminds/semver/v3 v3.4.0
@@ -32,6 +30,6 @@ require (
 	golang.org/x/crypto v0.47.0 // indirect
 	golang.org/x/net v0.49.0 // indirect
 	golang.org/x/sys v0.40.0 // indirect
-	golang.org/x/tools v0.26.0 // indirect
+	golang.org/x/tools v0.40.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 )
